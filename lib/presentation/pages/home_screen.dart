@@ -40,11 +40,11 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(
-                      child: Text('the current temperature is...'),
+                      child: Text('The current temperature in New York...'),
                     ),
                     Center(
                       child: Text(
-                        '10',
+                        '10°C',
                         style: TextStyle(
                             fontSize: 50, color: Colors.black.withAlpha(100)),
                       ),

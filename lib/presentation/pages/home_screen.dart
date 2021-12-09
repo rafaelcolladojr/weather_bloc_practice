@@ -9,25 +9,51 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Weather Bloc Practice'),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [
-            const Center(
-              child: TextField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  hintText: 'Enter your location',
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100,
+                child: Column(
+                  children: [
+                    const Center(
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          hintText: 'Enter your location',
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: TextButton(
+                        child: const Text('Search'),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Center(
-              child: TextButton(
-                child: const Text('Search'),
-                onPressed: () {},
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Text('the current temperature is...'),
+                    ),
+                    Center(
+                      child: Text(
+                        '10',
+                        style: TextStyle(
+                            fontSize: 50, color: Colors.black.withAlpha(100)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

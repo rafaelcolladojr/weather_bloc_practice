@@ -12,6 +12,7 @@ test/
 web/
 ios/
 android/
+lib/config/secret_key.dart
 
 # IntelliJ related
 *.iml

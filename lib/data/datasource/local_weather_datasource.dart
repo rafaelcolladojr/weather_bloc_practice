@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_bloc_practice/config/constants.dart';

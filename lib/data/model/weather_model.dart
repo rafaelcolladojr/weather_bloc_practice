@@ -1,15 +1,22 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 Weather weatherFromJson(String str) => Weather.fromJson(json.decode(str));
 
-class Weather {
-  Weather({
-    this.main,
-    this.name,
+class Weather extends Equatable {
+  const Weather({
+    required this.main,
+    required this.name,
   });
 
-  Main? main;
-  String? name;
+  final Main main;
+  final String name;
+
+  static const Weather empty = Weather(
+    main: Main(temp: 0.0),
+    name: '',
+  );
 
   factory Weather.fromJson(Map<String, dynamic> json) => Weather(
         main: Main.fromJson(json["main"]),
@@ -17,17 +24,20 @@ class Weather {
       );
 
   Map<String, dynamic> toJson() => {
-        "main": main!.toJson(),
+        "main": main.toJson(),
         "name": name,
       };
+
+  @override
+  List<Object?> get props => [main, name];
 }
 
-class Main {
-  Main({
-    this.temp,
+class Main extends Equatable {
+  const Main({
+    required this.temp,
   });
 
-  double? temp;
+  final double temp;
 
   factory Main.fromJson(Map<String, dynamic> json) => Main(
         temp: json["temp"].toDouble(),
@@ -36,4 +46,7 @@ class Main {
   Map<String, dynamic> toJson() => {
         "temp": temp,
       };
+
+  @override
+  List<Object?> get props => [temp];
 }

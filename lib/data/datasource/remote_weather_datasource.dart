@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:weather_bloc_practice/config/constants.dart';
+import 'package:weather_bloc_practice/config/secret_key.dart';
 import 'package:weather_bloc_practice/core/error/exception.dart';
 import 'package:weather_bloc_practice/data/model/weather_model.dart';
 import 'package:http/http.dart' as http;
@@ -16,7 +17,8 @@ class RemoteWeatherDataSourceImpl implements RemoteWeatherDataSource {
 
   @override
   Future<Weather> getLocationWeather(String location) async {
-    String url = kWeatherApiBaseUrl + location + '&appid=$kCachedWeatherKey';
+    String url =
+        kWeatherApiBaseUrl + location + '&units=metric&appid=$kWeatherApiKey';
     http.Response response = await client.get(Uri.parse(url));
 
     if (response.statusCode == 200) {

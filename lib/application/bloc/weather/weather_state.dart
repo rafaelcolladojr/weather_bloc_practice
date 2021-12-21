@@ -1,5 +1,0 @@
-class WeatherState {
-  int? temperature;
-
-
-}

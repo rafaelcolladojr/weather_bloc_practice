@@ -26,13 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
         // Display toast on failure
         if (state.status.isFailure) {
           Fluttertoast.showToast(
-              msg: "This is Center Short Toast",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
+              msg: "Unable to retrieve weather data.",
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 1,
-              backgroundColor: Colors.red,
+              backgroundColor: Colors.grey,
               textColor: Colors.white,
-              fontSize: 16.0);
+              fontSize: 1.0);
         }
       },
       child: Scaffold(
@@ -63,8 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: TextButton(
                           child: const Text('Search'),
                           onPressed: () async {
-                            BlocProvider.of<WeatherBloc>(context)
-                                .add(GetLocationWeatherEvent(location));
+                            if (location != '') {
+                              BlocProvider.of<WeatherBloc>(context)
+                                  .add(GetLocationWeatherEvent(location));
+                            }
                           },
                         ),
                       ),

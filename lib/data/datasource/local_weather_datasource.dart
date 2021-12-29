@@ -30,12 +30,11 @@ class LocalWeatherDatasourceImpl implements LocalWeatherDatasource {
     // attempt to get cached weather json string associated with provided location string
     // location name is used in storage key
     final jsonString =
-        sharedPreferences.getString('${kCachedWeatherKey}_$location');
+        sharedPreferences.getString('${kCachedWeatherKey}_$location') ?? '';
 
     if (jsonString != '') {
       // if weather is not cached, return CacheException. Later to be CacheFailure
-      return Future<Weather>.value(
-          Weather.fromJson(jsonDecode(jsonString ?? '')));
+      return Future<Weather>.value(Weather.fromJson(jsonDecode(jsonString)));
     } else {
       throw CacheException();
     }
